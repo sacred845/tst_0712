@@ -1,0 +1,5 @@
+/vendor/
+/dump.sql
+/access.log
+/error.log
+/composer.phar

@@ -1,0 +1,10 @@
+<?php
+
+$dbParams = array(
+    'driver'   => 'pdo_mysql',
+    'user'     => '<DB_USER_NAME>',
+    'host'     => '<DB_IP_ADDRESS>',
+    'port'     => '3306',
+    'password' => '<DB_USER_PASSWORD>',
+    'dbname'   => '<DB_NAME>'
+);

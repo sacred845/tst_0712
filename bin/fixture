@@ -1,0 +1,108 @@
+<?php
+
+
+use Doctrine\ORM\EntityManager;
+use App\Entity\Course;
+use App\Entity\Teacher;
+use App\Entity\Student;
+use App\Entity\Dashboard;
+
+// Adjust this path to your actual bootstrap.php
+require __DIR__ . '/../bootstrap.php';
+require __DIR__ . '/../cfg//fixtures.php';
+
+try {
+    $entityManager->getConnection()->query('SET FOREIGN_KEY_CHECKS=0');
+    $dbPlatform = $entityManager->getConnection()->getDatabasePlatform();
+    $cmd = $entityManager->getClassMetadata(Dashboard::class);    
+    $q = $dbPlatform->getTruncateTableSql($cmd->getTableName());
+    $entityManager->getConnection()->executeUpdate($q);
+    $cmd = $entityManager->getClassMetadata(Course::class);    
+    $q = $dbPlatform->getTruncateTableSql($cmd->getTableName());
+    $entityManager->getConnection()->executeUpdate($q);
+    $cmd = $entityManager->getClassMetadata(Teacher::class);
+    $q = $dbPlatform->getTruncateTableSql($cmd->getTableName());
+    $entityManager->getConnection()->executeUpdate($q);
+    $cmd = $entityManager->getClassMetadata(Student::class);
+    $q = $dbPlatform->getTruncateTableSql($cmd->getTableName());
+    $entityManager->getConnection()->executeUpdate($q);    
+    $entityManager->getConnection()->query('SET FOREIGN_KEY_CHECKS=1');
+} catch (\Exception $e) {
+    echo sprintf("%s\n", $e->getMessage());
+    if (!$entityManager->isOpen()) {
+        $entityManager = EntityManager::create($dbParams, $config);
+    }
+}
+
+// Insert courses
+if ($fixtures_data['course'] ?? null) {
+    $num = 0;
+    foreach ($fixtures_data['course'] as $item) {
+        try {
+            $course = new Course();
+            $course->setName($item['name']);
+            $entityManager->persist($course);
+            $entityManager->flush($course);
+            $num++;        
+        } catch (\Exception $e) {
+            echo sprintf("%s\n", $e->getMessage());
+            if (!$entityManager->isOpen()) {
+                $entityManager = EntityManager::create($dbParams, $config);
+            }
+        }
+
+    }
+    echo sprintf("Inserted into course %d lines\n", $num);
+}
+
+// Insert teachers
+if ($fixtures_data['teachers'] ?? null) {
+    $num = 0;
+    foreach ($fixtures_data['teachers'] as $item) {
+        $course = $entityManager->getRepository(Course::class)->findOneBy(['name' => $item['course']]);
+        if ($course) {
+            try {
+                $teacher = new Teacher();
+                $teacher->setFirstName($item['first_name'])
+                    ->setSecondName($item['second_name'])
+                    ->setThirdName($item['third_name'])
+                    ->setCourse($course)
+                ;
+                $entityManager->persist($teacher);
+                $entityManager->flush($teacher);
+                $num++;
+            } catch (\Exception $e) {
+                echo sprintf("%s\n", $e->getMessage());
+                if (!$entityManager->isOpen()) {
+                    $entityManager = EntityManager::create($dbParams, $config);
+                }
+            }
+        }
+    }
+    echo sprintf("Inserted into teachers %d lines\n", $num);
+}
+
+// Insert students
+if ($fixtures_data['students'] ?? null) {
+    $num = 0;
+    foreach ($fixtures_data['students'] as $item) {
+        try {
+            $student = new Student();
+            $student->setFirstName($item['first_name'])
+                ->setSecondName($item['second_name'])
+                ->setThirdName($item['third_name'])
+                ->setEmail($item['email'])
+                ->setPhone($item['phone'])
+            ;
+            $entityManager->persist($student);
+            $entityManager->flush($student);
+            $num++;
+        } catch (\Exception $e) {
+            echo sprintf("%s\n", $e->getMessage());
+            if (!$entityManager->isOpen()) {
+                $entityManager = EntityManager::create($dbParams, $config);
+            }
+        }
+    }
+    echo sprintf("Inserted into students %d lines\n", $num);
+}

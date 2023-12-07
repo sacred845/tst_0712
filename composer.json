@@ -1,0 +1,22 @@
+{
+    "name": "sac/test_task",
+    "license": "MIT",
+    "type": "project",
+    "description": "Tasks",
+    "config": {
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.0"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "doctrine/orm": "2.8"
+    }
+}

@@ -1,0 +1,119 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"><?php if ($params['mode'] == 'edit'): ?>Редактировать занятие<?php else: ?>Добавить занятие<?php endif;?></h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<?php if ($params['errors']): ?>
+    <?php foreach($params['errors'] as $error): ?>
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php echo $error ?>              
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel-body">
+            <form role="form" id="task-form" action="" method="POST" enctype="multipart/form-data">
+                <div class="row">
+
+                    <div class="col-lg-12">     
+                        <div class="form-group">
+                            <label>День недели</label>
+                            <select id="week_day_id" name="week_day" rel="dh_field" class="form-control">
+                                <?php if ($params['week_days'] ?? null): ?>
+                                    <?php foreach ($params['week_days'] as $id => $day): ?>
+                                    <option value="<?php echo $id; ?>"><?php echo $day; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>           
+                    </div>
+                    <div class="col-lg-12">     
+                        <div class="form-group">
+                            <label>Время</label>
+                            <select id="l_time_id" name="l_time" class="form-control">
+                                <?php if ($params['time_list'] ?? null): ?>
+                                    <?php foreach ($params['time_list'] as $k => $dt): ?>
+                                    <option value="<?php echo $dt->format('H:i'); ?>"><?php echo $dt->format('H:i'); ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>           
+                    </div>                    
+                    
+                    <div class="col-lg-12">     
+                        <div class="form-group">
+                            <label>Учитель</label>
+                            <select id="teacher_id" rel="dh_field" name="teacher" class="form-control">
+                                <?php if ($params['teachers'] ?? null): ?>
+                                    <?php foreach ($params['teachers'] as $id => $name): ?>
+                                    <option value="<?php echo $id; ?>"><?php echo $name; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>           
+                    </div>
+                    
+                    <div class="col-lg-12">     
+                        <div class="form-group">
+                            <label>Ученик</label>
+                            <select name="student" class="form-control">
+                                <?php if ($params['students'] ?? null): ?>
+                                    <?php foreach ($params['students'] as $id => $name): ?>
+                                    <option value="<?php echo $id; ?>"><?php echo $name; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>           
+                    </div>
+
+                    <div class="col-lg-12" style="border-top: 1px solid; margin-top: 10px; padding-top: 20px">
+                        <div class="form-group">
+                            <button type="button" onClick="document.location='/'" class="btn btn-default">Вернуться к расписанию</button>
+                            <button type="submit" name="save" class="btn btn-success">Сохранить</button>                        
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="quickview-page" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="panel-title">Предварительный просмотр</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+  <tbody>
+    <tr>
+      <td>Имя пользователя</td>
+      <td id="q_username"></td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td id="q_email"></td>
+    </tr>
+    <tr>
+      <td>Задача</td>
+      <td id="q_description"></td>
+    </tr>
+    <tr>
+      <td>Изображение</td>
+      <td id="q_preview"></td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+    </div>
+  </div>
+</div>
