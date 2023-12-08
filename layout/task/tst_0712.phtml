@@ -1,0 +1,52 @@
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Задание</h1>
+                </div>
+            </div>
+            <div class="row">
+<p style="text-align:justify"><span style="font-size:11pt"><span style="line-height:normal"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">В рамках тестового задания необходимо создать простое PHP-приложение для работы с расписанием в небольшой вымышленной онлайн-школе языков.</span></span></span></span></span></span></p>
+
+<p>&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="line-height:normal"><span style="font-family:Calibri,sans-serif"><b><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">База данных содержит следующую информацию:</span></span></span></b></span></span></span></p>
+
+<ul>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Курсы (Английский язык, Испанский язык)</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Учителя (ФИО, что преподает)</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Ученики (ФИО, телефон, почта)</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Расписание занятий</span></span></span></span></span></span></span></span></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="line-height:normal"><span style="font-family:Calibri,sans-serif"><b><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">Задание:</span></span></span></b></span></span></span></p>
+
+<ul>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Данные курсов, учителей, учеников в бд должны быть добавлены с помощью миграции.</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Создать CRUD модели с использованием геттеров и сеттеров для быстрого получения данных из таблиц</span></span></span></span></span></span></span></span></li>
+</ul>
+
+<ul>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Сделать страницу добавления ученика в расписание. При этом:</span></span></span></span></span></span></span></span>
+
+	<ul style="list-style-type:disc">
+		<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 72.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Сделать проверку о невозможности добавить учеников на одно и тоже время по расписанию.&nbsp;</span></span></span></span></span></span></span></span></li>
+		<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 72.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Сделать проверку о невозможности выбрать преподавателя повторно на одинаковое время (если он уже занят на другой курс)</span></span></span></span></span></span></span></span></li>
+		<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 72.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Занятия могут проводиться с 9 утра до 18 часов ежедневно. Стандартная длительность занятия 1 час - для этого используется константа. При желании (необязательно) можно реализовать функционал, который учитывает, что занятия проводятся только по будням.</span></span></span></span></span></span></span></span></li>
+	</ul>
+	</li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">На главной странице вывести общее расписание в виде таблиц по каждому курсу на ближайшую неделю: кто с кем занимается и в какое время</span></span></span></span></span></span></span></span></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="line-height:normal"><span style="font-family:Calibri,sans-serif"><b><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="color:black">Итог выполнения тестового:</span></span></span></b></span></span></span></p>
+
+<ul>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Рабочее приложение на чистом PHP с двумя страницами: общая страница расписания и добавление занятия (внешний вид любой, можно использовать бутстрап)</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Ссылка на GitHub веб-приложения</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Файл дампа базы данных</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="line-height:normal"><span style="tab-stops:list 36.0pt"><span style="vertical-align:baseline"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Times New Roman&quot;,serif">Скринкаст экрана, где вы показываете как работает ваше приложение</span></span></span></span></span></span></span></span></li>
+</ul>
+
+            </div>
